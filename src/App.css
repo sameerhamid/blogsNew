@@ -25,7 +25,7 @@
   height: 100vh;
 }
 .wrapper {
-  height: 64vh;
+  height: 70vh;
   overflow-y: scroll;
   margin: 2rem 0;
   display: flex;
@@ -61,4 +61,22 @@
 .showReadmore {
   height: fit-content !important;
   display: block;
+}
+
+/* footer styling starts */
+
+.my_footer {
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  padding-top: 10px;
+}
+
+.right_footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
 }

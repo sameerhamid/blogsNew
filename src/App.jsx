@@ -17,7 +17,7 @@ function App() {
           <SideBar tab={tab} setTab={setTab} />
 
           <div className="right">
-            <Header />
+            <Header setTab={setTab} />
             {tab === "home" ? <PostList /> : <MyForm />}
             <Footer />
           </div>

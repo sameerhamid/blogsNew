@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({ tab, setTab }) => {
   return (
     <header className="p-3 text-bg-dark">
       <div className="container">
@@ -9,31 +9,20 @@ const Header = () => {
             href="/"
             className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"></a>
 
-          <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li>
-              <a href="#" className="nav-link px-2 text-secondary">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#" className="nav-link px-2 text-white">
-                Features
-              </a>
-            </li>
-
-            <li>
-              <a href="#" className="nav-link px-2 text-white">
-                About
-              </a>
-            </li>
-          </ul>
+          <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"></ul>
 
           <div className="text-end">
-            <button type="button" className="btn btn-outline-light me-2">
-              Login
+            <button
+              type="button"
+              className="btn btn-outline-light me-2"
+              onClick={() => setTab("home")}>
+              Home
             </button>
-            <button type="button" className="btn btn-warning">
-              Sign-up
+            <button
+              type="button"
+              className="btn btn-warning"
+              onClick={() => setTab("create-post")}>
+              Add New Blog
             </button>
           </div>
         </div>
