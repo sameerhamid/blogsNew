@@ -46,7 +46,7 @@ const MyForm = () => {
   return (
     <Wrapper>
       <form style={{ width: "80%" }} onSubmit={handelSubmit}>
-        <div className="mb-3">
+        <div className="mb-2">
           <label htmlFor="imageUrl" className="form-label">
             Image Url:
           </label>
@@ -59,7 +59,7 @@ const MyForm = () => {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-2">
           <label htmlFor="title" className="form-label">
             Title:
           </label>
@@ -72,7 +72,7 @@ const MyForm = () => {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-2">
           <label htmlFor="body" className="form-label">
             Post Content:
           </label>
@@ -84,7 +84,7 @@ const MyForm = () => {
             aria-describedby="emailHelp"
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-2">
           <label htmlFor="tags" className="form-label">
             Tags:
           </label>
@@ -96,7 +96,7 @@ const MyForm = () => {
             aria-describedby="emailHelp"
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-2">
           <label htmlFor="userId" className="form-label">
             User Id:
           </label>
@@ -109,7 +109,7 @@ const MyForm = () => {
           />
         </div>
 
-        <button type="submit" className="btn btn-success w-100">
+        <button type="submit" className="btn btn-success w-100 mt-3">
           Submit
         </button>
       </form>
