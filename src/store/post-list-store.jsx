@@ -1,11 +1,11 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 
 export const PostlistContext = createContext({
   posts: [],
   addPost: () => {},
   deletePost: () => {},
   updateReactions: () => {},
-  addInitialPosts: () => {},
+  loading: false,
 });
 
 //reducer
@@ -25,7 +25,7 @@ const postsReducer = (state, action) => {
       ...state,
       {
         id: action.payload.id,
-        imgUrl: action.payload.imgUrl,
+
         title: action.payload.title,
         body: action.payload.body,
         reactions: action.payload.reactions,
@@ -42,8 +42,12 @@ const postsReducer = (state, action) => {
 const PostListContextProvider = (props) => {
   const [posts, dispatchPosts] = useReducer(postsReducer, []);
 
+  const [loading, setLoading] = useState(false);
+
   const addPost = (post) => {
     let tags = post.tags.trim().split(" ");
+
+    console.log({ post });
 
     let id = 0;
     if (posts.length == 0) {
@@ -55,7 +59,6 @@ const PostListContextProvider = (props) => {
       type: "ADD_POST",
       payload: {
         id,
-        imgUrl: post.imgUrl,
         title: post.title,
         body: post.body,
         reactions: 0,
@@ -86,8 +89,24 @@ const PostListContextProvider = (props) => {
     });
   };
 
+  useEffect(() => {
+    setLoading(true);
+    const controller = new AbortController();
+    const signal = controller.signal;
+    fetch("https://dummyjson.com/posts", { signal })
+      .then((res) => res.json())
+      .then((data) => {
+        addInitialPosts(data.posts);
+        setLoading(false);
+      });
+
+    return () => {
+      console.log("cleanup function called");
+      controller.abort();
+    };
+  }, []);
+
   const addInitialPosts = (posts) => {
-    console.log(posts);
     dispatchPosts({
       type: "INITIAL_POSTS",
       posts,
@@ -96,7 +115,13 @@ const PostListContextProvider = (props) => {
 
   return (
     <PostlistContext.Provider
-      value={{ posts, addPost, deletePost, updateReactions, addInitialPosts }}>
+      value={{
+        posts,
+        addPost,
+        deletePost,
+        updateReactions,
+        loading,
+      }}>
       {props.children}
     </PostlistContext.Provider>
   );

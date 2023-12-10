@@ -4,7 +4,7 @@ import { PostlistContext } from "../store/post-list-store";
 
 const MyForm = () => {
   const { addPost } = useContext(PostlistContext);
-  const imgUrl = useRef("");
+
   const title = useRef("");
   const body = useRef("");
   const tags = useRef("");
@@ -12,10 +12,7 @@ const MyForm = () => {
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    if (imgUrl.current.value === "") {
-      imgUrl.current.focus();
-      return;
-    } else if (title.current.value === "") {
+    if (title.current.value === "") {
       title.current.focus();
       return;
     } else if (body.current.value === "") {
@@ -29,7 +26,6 @@ const MyForm = () => {
       return;
     }
     let post = {
-      imgUrl: imgUrl.current.value,
       title: title.current.value,
       body: body.current.value,
       tags: tags.current.value,
@@ -37,7 +33,6 @@ const MyForm = () => {
     };
     addPost(post);
 
-    imgUrl.current.value = "";
     title.current.value = "";
     body.current.value = "";
     tags.current.value = "";
@@ -46,19 +41,6 @@ const MyForm = () => {
   return (
     <Wrapper>
       <form style={{ width: "80%" }} onSubmit={handelSubmit}>
-        <div className="mb-2">
-          <label htmlFor="imageUrl" className="form-label">
-            Image Url:
-          </label>
-          <input
-            ref={imgUrl}
-            type="text"
-            className="form-control"
-            id="imageUrl"
-            aria-describedby="emailHelp"
-          />
-        </div>
-
         <div className="mb-2">
           <label htmlFor="title" className="form-label">
             Title:

@@ -32,7 +32,8 @@ const Footer = () => {
 
       <div className="my_footer">
         <div className="left">
-          Copyright © 2023 All rights reserved | This website is made by Sameer
+          Copyright © 2023 All rights reserved | This website is made by ❤️
+          Sameer
         </div>
         <div className="right_footer">
           <a href="https://github.com/sameerhamid">

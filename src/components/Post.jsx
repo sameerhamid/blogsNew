@@ -15,7 +15,6 @@ const Post = ({ post }) => {
     setMyPost({ ...myPost, readmore: !myPost.readmore });
   };
 
-  console.log({ myPost });
   return (
     <div className="card" style={{ width: "16rem", height: "fit-content" }}>
       <div className="card-body">

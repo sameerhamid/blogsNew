@@ -7,25 +7,7 @@ import Loading from "./Loading";
 import WelcomeMessage from "./WelcomeMessage";
 
 const PostList = () => {
-  const { posts, addInitialPosts } = useContext(PostlistContext);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-    const controller = new AbortController();
-    const signal = controller.signal;
-    fetch("https://dummyjson.com/posts", { signal })
-      .then((res) => res.json())
-      .then((data) => {
-        addInitialPosts(data.posts);
-        setLoading(false);
-      });
-
-    return () => {
-      console.log("cleanup function called");
-      controller.abort();
-    };
-  }, []);
+  const { posts, loading } = useContext(PostlistContext);
 
   return (
     <Wrapper>

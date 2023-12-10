@@ -7,6 +7,7 @@ import MyForm from "./components/MyForm";
 import SideBar from "./components/SideBar";
 import { useState } from "react";
 import PostListContextProvider from "./store/post-list-store";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [tab, setTab] = useState("home");
@@ -18,7 +19,8 @@ function App() {
 
           <div className="right">
             <Header setTab={setTab} />
-            {tab === "home" ? <PostList /> : <MyForm />}
+
+            <Outlet />
             <Footer />
           </div>
         </div>

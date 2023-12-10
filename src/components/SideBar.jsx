@@ -1,26 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SideBar = ({ tab, setTab }) => {
   return (
     <div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark my_sidebar">
-      <a
-        href="/"
+      <Link
+        to="/"
         className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <span className="fs-4">My Blogs</span>
-      </a>
+      </Link>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
         <li className="nav-item" onClick={() => setTab("home")}>
-          <a href="#" className={`nav-link ${tab === "home" && "active"}`}>
+          <Link to="/" className={`nav-link ${tab === "home" && "active"}`}>
             Home
-          </a>
+          </Link>
         </li>
         <li className="nav-item" onClick={() => setTab("create-post")}>
-          <a
-            href="#"
+          <Link
+            to="add-new"
             className={`nav-link ${tab === "create-post" && "active"}`}>
             Add New Blog
-          </a>
+          </Link>
         </li>
       </ul>
       <hr />
