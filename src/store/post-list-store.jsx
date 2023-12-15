@@ -1,4 +1,5 @@
 import { createContext, useEffect, useReducer, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const PostlistContext = createContext({
   posts: [],
@@ -41,8 +42,8 @@ const postsReducer = (state, action) => {
 
 const PostListContextProvider = (props) => {
   const [posts, dispatchPosts] = useReducer(postsReducer, []);
-
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate("");
 
   const addPost = (post) => {
     let tags = post.tags.trim().split(" ");
@@ -66,8 +67,8 @@ const PostListContextProvider = (props) => {
         tags: tags,
       },
     };
-
     dispatchPosts(addPostAction);
+    navigate("/");
   };
 
   const deletePost = (id) => {

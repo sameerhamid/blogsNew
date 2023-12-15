@@ -32,7 +32,6 @@ const MyForm = () => {
       userId: userId.current.value,
     };
     addPost(post);
-
     title.current.value = "";
     body.current.value = "";
     tags.current.value = "";
